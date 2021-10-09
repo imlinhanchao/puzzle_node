@@ -17,7 +17,7 @@
         <section id="rank">
 <% if(user.username){ -%>
             <p style="text-align: center;">
-                Hi~<a title="点击用户名退出登录" href="/logout" id="logout"><%= user.nickname %></a>，你最远已抵达<a title="继续闯关" href="<%= last.url %>">Stage <%= last.stage %></a>。
+                Hi~<a title="个人资料" href="/u/<%=user.username%>"><%= user.nickname %></a>，你最远已抵达<a title="继续闯关" href="<%= last.url %>">Stage <%= last.stage %></a>。
             </p>  
 <% } -%>
             <table id="user_list">
