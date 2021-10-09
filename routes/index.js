@@ -27,7 +27,7 @@ router.all('/rank.html', async function(req, res, next) {
     let records = await new User(req.session).getRecord();
     let last = req.session.last;
     let user = req.session.user || {};
-    res.render('rank', { config, records, user, last });
+    res.render('rank', { config, records, user, last, total: await User.count() });
 });
 
 router.post('/u/:username', async function(req, res, next) {

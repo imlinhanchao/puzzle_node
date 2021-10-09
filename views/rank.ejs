@@ -20,6 +20,9 @@
                 Hi~<a title="个人资料" href="/u/<%=user.username%>"><%= user.nickname %></a>，你最远已抵达<a title="继续闯关" href="<%= last.url %>">Stage <%= last.stage %></a>。
             </p>  
 <% } -%>
+            <p>
+                下面为前 50 名闯关者的闯关记录排行榜，目前加入闯关者总共有<%=total%>人。
+            </p>
             <table id="user_list">
                 <thead>
                     <tr>

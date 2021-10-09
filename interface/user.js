@@ -313,6 +313,18 @@ class Module extends App {
         }
     }
 
+    static async count() {
+        try{
+            return (await Record.findAll({
+                attributes: [[Account.db.fn('COUNT', Record.db.col('user')), 'total']],
+                group: ['user'],
+            })).length;
+        } catch (err) {
+            if (err.isdefine) throw (err);
+            throw (this.error.db(err));
+        }                           
+    }
+
     async getRecord() {
         try{
             Record.belongsTo(Account, { foreignKey: 'user', targetKey: 'id' });
