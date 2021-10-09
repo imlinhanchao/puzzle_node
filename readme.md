@@ -39,9 +39,15 @@
 npm install
 ```
 
-编译前端代码：  
+初始化配置
 ```bash
-npm run build
+npm run init
+```
+
+重新初始化数据库（**会清空数据**）
+```bash
+npm run initdb
+npm run initdb -- user # 初始化指定表
 ```
 
 启动服务：
