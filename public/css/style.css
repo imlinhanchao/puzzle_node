@@ -1,0 +1,185 @@
+html *, html *:before, html *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body{
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.title a { color :#000}
+.login_form .user, .login_form .passwd{
+  width: 40px;
+  height:40px;
+  float:left;
+  color:#FFF;
+  background-color:#000;
+  text-align:center;
+  margin: auto;
+}
+.login_form p{
+  width: 70%;
+  margin:10px auto;
+  line-height:40px;
+  height:40px;
+  text-align: right;
+  max-width:350px;
+}
+.login_form input.text{
+  border:none;
+  width: calc(100% - 40px);
+  height:40px;
+  line-height:20px;
+  background-color:#DEDFE1;
+  margin: 0;
+  padding: 0 0 0 10px;
+  float:left;
+}
+
+.login_form .submit-btn{
+  width: 80px;
+  background:#000;
+  border:none;
+  color:#fff;
+  height: 35px;
+  margin: 0;
+}
+.login_form .submit-btn:hover{
+  cursor:pointer;
+}
+.login_form .submit-btn:active{
+  width:78px;
+  height:33px;
+  margin:1px 1px;
+}
+.msg-error{
+  text-align:center;
+  color: #aF0700;
+  font-weight: bold;
+  width:70%;
+  max-width: 350px;
+  margin:auto;
+  padding:0 5px;
+}
+.login_form #passwd {
+  width: calc(100% - 40px);
+}
+/*icon font*/
+@font-face {
+  font-family: 'iconfont';
+  src:  url('../fonts/icomoon.eot?4');
+  src:  url('../fonts/icomoon.eot?4#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?4') format('truetype'),
+    url('../fonts/icomoon.woff?4') format('woff'),
+    url('../fonts/icomoon.svg?4#iconfont') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"]:before, 
+[class*=" icon-"]:before, 
+.icon-search{
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'iconfont' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-user:before {
+  content: "\e901";
+}
+.icon-key:before {
+  content: "\e902";
+}
+
+#login_form {
+  margin-top: 20px;
+}
+
+footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1em;
+  color : #aaa;
+}
+
+footer a {
+   /*  color:#c3c4c5;  */
+   color : #aaa;
+   border: none;
+}
+
+footer a:hover {
+   /*  color:#bd1d27;  */
+   text-decoration : underline;
+}
+
+footer p {
+   clear:both;
+   text-align:center;
+   padding:25px 0 20px;
+   margin: 1em;
+}
+#rank, #stages {
+  font-size: 15px;
+  margin-bottom: 60px
+}
+#user_list{
+border-collapse:collapse;
+margin:1px auto;
+width:100%;
+}
+#user_list a {
+  color:#000;
+  }
+#user_list th{
+text-align:center;
+padding:5px 10px;
+border-bottom:1px solid #CCCBCA;
+}
+#user_list td, #book_list th{
+padding:7px;
+text-align:center;
+}
+#user_list tr.alt td {
+color:#000000;
+background-color: rgba(242, 242, 242, .7);
+}
+#user_list tr td {
+color:#000000;
+background-color:rgba(255, 255, 255, .7);
+}
+.title sup {
+  font-size: 20%;
+  font-weight: normal;
+  vertical-align: text-top;
+}
+.profile {
+  border-width: 1px;
+  margin-bottom: 1em;
+}
+.profile label {
+  display: inline-block;
+  width: 5em;
+}
+.profile input.text, .profile #passwd{
+  width: 200px;
+  margin-right: 10px;
+}
+.profile p {
+  padding: 0 2em
+}
+.user-info {
+  display: inline-block;
+  margin-right: 5px;
+}

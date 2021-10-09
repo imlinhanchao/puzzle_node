@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow, nosnippet, noarchive">
+    <title><%= title %></title>
+    <link type="text/css" rel="stylesheet" href="/css/common.css" />
+    <link type="text/css" rel="stylesheet" href="/css/style.css" />
+    <script type="text/javascript" src="/js/do.js"></script>
+</head>
+
+<body>
+    <section>
+        <form action="" method="post">
+<% if (locals.error) { %>
+            <div class="msg-error"><%= error %></div>
+<% } %>
+            <div class="login_form">
+                <p><label for="username" class="user icon-user"><span class="hide">用户名</span></label><input type="text"
+                        name="username" id="username" class="text" value="<%=account.username||''%>" placeholder="用户名" maxlength="20"/></p>
+                <p><label for="passwd" class="passwd icon-key"><span class="hide">密码</span></label><input
+                        type="password" name="passwd" id="passwd" class="text" value="<%=account.passwd||''%>" placeholder="密码" /></p>
+                <p><input type="submit" value="<%= register ? '注册' : '登录' %>" class="submit-btn" /></p>
+            </div>
+        </form>
+    </section>
+</body>
+</html>

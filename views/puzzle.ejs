@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow, nosnippet, noarchive"><%- (puzzle.headCode||'') %>
+    <title><%= config.name %> - Stage <%= puzzle.stage %><%= ("" == puzzle.title ? "" : " - ") %><%= puzzle.title %>
+    </title>
+    <link type="text/css" rel="stylesheet" href="/css/common.css" />
+    <script type="text/javascript" src="/js/common.js"></script>
+</head>
+
+<body>
+    <form action="" method="post">
+        <header>
+            <h1 class="title"><%= config.name -%> <br /> Stage <%= puzzle.stage %></h1>
+        </header>
+        <section><%- puzzle.htmlCode %></section>
+        <!--以下部分和关卡无关-->
+        <footer>
+<% if(puzzle.stage != 0){ -%>
+            <div id="userinfo">
+<% if(!user){ -%>
+                <p><a href="/login" id="login">登录</a> | <a href="/register" id="register">注册</a></p>
+<% }else{ -%>
+                <p>
+                    <a title="个人资料" href="/u/<%= user.username %>"><%= user.nickname %></a>，最远已抵达<a title="前往关卡 >>"
+                        href="<%= last.url %>">Stage <%= last.stage %></a>。
+                    <a target="_blank" href="/rank.html">*排行榜</a>
+                </p>
+<% } -%>
+            </div>
+<% } -%>
+            <div id="cnzz">
+                <script type="text/javascript" src="/js/dlg.js"></script>
+                <input type="hidden" id="stage" name="stage" value="<%= puzzle.stage %>" />
+<% if (config.cnzz) { -%>
+                <script src="//v1.cnzz.com/stat.php?id=<%= config.cnzz %>&amp;web_id=<%= config.cnzz %>"
+                    type="text/javascript"></script>
+<% } -%>
+            </div>
+        </footer>
+        <!--以上部分和关卡无关-->
+    </form>
+</body>
+
+</html>
+<%- puzzle.lastCode||'' %>

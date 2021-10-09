@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, nosnippet, noarchive">
+  <title><%= config.name %> - 排行榜</title>
+  <link type="text/css" rel="stylesheet" href="/css/common.css" />
+  <link type="text/css" rel="stylesheet" href="/css/style.css" />
+  <script type="text/javascript" src="/js/common.js"></script>
+</head>
+<body>
+    <form action="" method="post">
+        <header>
+            <h1 class="title"><a href="/"><%= config.name -%> </a> <br/> 排行榜<sup>卷起来</sup></h1>
+        </header>
+        <section id="rank">
+<% if(user.username){ -%>
+            <p style="text-align: center;">
+                Hi~<a title="点击用户名退出登录" href="/logout" id="logout"><%= user.nickname %></a>，你最远已抵达<a title="继续闯关" href="<%= last.url %>">Stage <%= last.stage %></a>。
+            </p>  
+<% } -%>
+            <table id="user_list">
+                <thead>
+                    <tr>
+                        <th class="th_number">排名</th>
+                        <th class="th_name">用户名</th>
+                        <th class="th_stage">抵达关卡</th>
+                        <th class="th_date">抵达时间</th>
+                    </tr>
+                </thead>
+                <tbody>
+<% for(let i = 0; i < records.length; i++) { -%>
+                    <tr <%- records[i].username === user.username ? 'style="font-weight: bold;"' : '' %>>
+                        <td><%= (i+1) %></td>
+                        <td><a href="/u/<%=records[i].username%>"><%= records[i].nickname %></a></td>
+                        <td><%= records[i].stage %></td>
+                        <td><script>document.write(new Date(<%= records[i].create_time %> * 1000).toLocaleString())</script></td>
+                    </tr>
+<% } -%>
+                </tbody>
+            </table>
+        </section>
+        <footer>
+            <p>Copyright © <%= new Date().getFullYear() %><br/>All Rights Reserved. Designed by <a href="https://github.com/imlinhanchao" target="_blank">Hancel</a></p>
+            <div class="hide">
+<% if (config.cnzz) { -%>
+                <script src="//v1.cnzz.com/stat.php?id=<%= config.cnzz %>&amp;web_id=<%= config.cnzz %>" type="text/javascript"></script>
+<% } -%>
+            </div>
+        </footer>
+    </form>
+</body>
+</html>

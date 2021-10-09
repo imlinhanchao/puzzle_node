@@ -1,0 +1,29 @@
+{
+  "name": "puzzle",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
+    "init": "node script/init.js",
+    "initdb": "node script/initdb.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "express-robots": "^0.1.6",
+    "express-session": "^1.17.2",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "mysql2": "^2.3.0",
+    "node-fetch": "^3.0.0",
+    "sequelize": "^6.6.5",
+    "session-file-store": "^1.5.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}

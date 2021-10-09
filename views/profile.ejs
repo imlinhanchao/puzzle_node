@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, nosnippet, noarchive">
+  <title><%= config.name %> - <%= user.nickname %></title>
+  <link type="text/css" rel="stylesheet" href="/css/common.css" />
+  <link type="text/css" rel="stylesheet" href="/css/style.css" />
+  <script type="text/javascript" src="/js/common.js"></script>
+</head>
+<body>
+    <form action="" method="post">
+        <header>
+            <h1 class="title"><a href="/"><%= config.name -%> </a> <br/> @<%= user.username %></h1>
+        </header>
+<% if(user.username == account.username) { %>
+        <section>
+<% if (locals.error) { %>
+                <div class="msg-error"><%= error %></div>
+<% } %>
+                <form action="" method="post">
+                <fieldset class="profile">
+                    <legend>个人资料</legend>
+                    <p><label for="username">昵称</label><input type="text"
+                        name="nickname" id="username" class="text" value="<%=account.nickname||''%>" placeholder="用户名" maxlength="20"/>
+                    </p>
+                    <p><label for="passwd">新密码</label><input
+                        type="password" name="passwd" id="passwd" class="text" value="<%=account.passwd||''%>" placeholder="不修改无需填写" />
+                        <label for="oldpasswd" >旧密码</label><input
+                        type="password" name="oldpasswd" id="oldpasswd" class="text" value="<%=account.oldpasswd||''%>" placeholder="不修改无需填写" /></p>
+                    <p><input type="submit" value="修改" class="submit-btn" /> <button class="submit-btn" id="logout">退出</button></p>
+                </fieldset>
+            </form>
+        </section>
+<% } else { %>
+        <section>
+            <p>
+                <span class="user-info"><b>昵称：</b> <%=user.nickname%></span>
+                <span class="user-info"><b>上次登录：</b> <script>document.write(new Date(<%=user.lastlogin%> * 1000).toLocaleString())</script></span>
+            </p>
+        </section>
+<% } %>
+        <section id="stages">
+            <table id="user_list">
+                <thead>
+                    <tr>
+                        <th class="th_stage">关卡</th>
+                        <th class="th_date">抵达时间</th>
+                        <th class="th_date">通过时间</th>
+                        <th class="th_date">耗时</th>
+                    </tr>
+                </thead>
+                <tbody>
+<% for(let i = 0; i < records.length; i++) { -%>
+                    <tr <%- records[i].username === user.username ? 'style="font-weight: bold;"' : '' %>>
+                        <td>
+<% if(user.username == account.username) { %>
+                            <a href="<%= records[i].url %>">Stage <%= records[i].stage %></a>
+<% }else { %>
+                            <span>Stage <%= records[i].stage %></span>
+<% } %>
+                        </td>
+                        <td><script>document.write(new Date(<%= records[i].create_time %> * 1000).toLocaleString())</script></td>
+                        <td>
+                            <%- records[i].pass_time ? `<script>document.write(new Date(${records[i].pass_time * 1000}).toLocaleString())</script>` : '还没通关' %>
+                        </td>
+                        <td><%= records[i].pass_time ? shorttime(records[i].pass_time - records[i].create_time) : shorttime(Date.now() / 1000 - records[i].create_time) %></td>
+                    </tr>
+<% } -%>
+                </tbody>
+            </table>
+        </section>
+        <footer>
+            <p>Copyright © <%= new Date().getFullYear() %><br/>All Rights Reserved. Designed by <a href="https://github.com/imlinhanchao" target="_blank">Hancel</a></p>
+            <div class="hide">
+<% if (config.cnzz) { -%>
+                <script src="//v1.cnzz.com/stat.php?id=<%= config.cnzz %>&amp;web_id=<%= config.cnzz %>" type="text/javascript"></script>
+<% } -%>
+            </div>
+        </footer>
+    </form>
+</body>
+</html>
