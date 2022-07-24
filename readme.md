@@ -9,7 +9,8 @@
 由之前的网页解谜开发模板 PHP 版本([szisa/puzzle](https://github.com/szisa/puzzle))演化而来，支持了更多自定义功能，另外增加用户登录注册和排行榜。依据此模板开发的网页解谜网站有：
 
 1. [摸鱼大闯关](https://p.hancel.org)
-2. [和平哥的谜](https://puzzle.iwpz.net/)
+2. [摸鱼小闯关](https://puzzle.iwpz.net/)
+3. [壁虎大闯关](https://p.10010.fan/)
 
 ## 📦 配置
 
