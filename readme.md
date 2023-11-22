@@ -4,7 +4,7 @@
   </a>
 </p>
 
-<h1 align="center">Online Puzzle Node</h1>
+<h1 align="center">Online Puzzle</h1>
 
 由之前的网页解谜开发模板 PHP 版本([szisa/puzzle](https://github.com/szisa/puzzle))演化而来，支持了更多自定义功能，另外增加用户登录注册和排行榜。依据此模板开发的网页解谜网站有：
 
