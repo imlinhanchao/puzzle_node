@@ -328,19 +328,30 @@ class Module extends App {
     async getRecord() {
         try{
             Record.belongsTo(Account, { foreignKey: 'user', targetKey: 'id' });
+            let maxStage = Record.db.fn('MAX', Record.db.col('stage'));
+            let stageCount = Record.db.fn('COUNT', Record.db.col('stage'));
+            let lastTime = Record.db.fn('MAX', Record.db.col(`${Record.tb}.create_time`))
             let records = await Record.findAll({
-                attributes: [[Record.db.fn('MAX', Record.db.col('stage')), 'stage'], [Record.db.fn('MAX', Record.db.col('puz_record.create_time')), 'create_time']],
+                attributes: [
+                    [maxStage, 'stage'], 
+                    [stageCount, 'count'],
+                    [lastTime, 'create_time']
+                ],
                 include: [{ 
                     model: Account,
                     required: true,
                     attributes: [['username', 'username'], ['nickname', 'nickname']]
                 }],
-                group: ['user'],
-                order: [[Record.db.fn('MAX', Record.db.col('stage')), 'DESC'], [Record.db.fn('MAX', Record.db.col('puz_record.create_time')), 'ASC']],
-                limit: 50
+                group: [Account.db.col('username'), Account.db.col('nickname'), Account.db.col(`${Account.tb}.id`)],
+                order: [[maxStage, 'DESC'], [lastTime, 'ASC']],
+                limit: 50,
+                having: where(stageCount, { [Op.gte]: maxStage })
             })
 
-            return records.map(r => Object.assign({ username: r.puz_user.username, nickname: r.puz_user.nickname }, App.filter(r, ['username', 'nickname', 'stage', 'create_time'])));
+            return records.map(r => Object.assign(
+                { username: r[Account.tb].username, nickname: r[Account.tb].nickname }, 
+                App.filter(r, ['username', 'nickname', 'stage', 'create_time'])
+            ));
         } catch (err) {
             if (err.isdefine) throw (err);
             throw (this.error.db(err));
